@@ -27,6 +27,54 @@
 
 @end
 
+@interface BDSVideoUrlEntity : NSObject
+
+@property(copy, nonatomic) NSString *url; // @synthesize url=_url;
+
+@end
+
+@interface BDSBaseBusinessModel : NSObject
+
+@end
+
+@interface BDSFeedBaseEntity : BDSBaseBusinessModel
+
+@end
+
+@interface BDSShareEntity : BDSBaseBusinessModel
+
+@property(retain, nonatomic) NSArray *videoUrls; // @synthesize videoUrls=_videoUrls;
+@property(copy, nonatomic) NSArray *godCommentUrlList; // @synthesize godCommentUrlList=_godCommentUrlList;
+
+@end
+
+@interface BDSVideoEntity : BDSBaseBusinessModel
+
+@property(retain, nonatomic) NSArray *urlList; // @synthesize urlList=_urlList;
+@property(retain, nonatomic) NSArray *godCommentUrlList; // @synthesize godCommentUrlList=_godCommentUrlList;
+
+@end
+
+@interface BDSItemVideoEntity : BDSBaseBusinessModel
+
+@property(retain, nonatomic) BDSVideoEntity *videoDownload; // @synthesize videoDownload=_videoDownload;
+
+@end
+
+@interface BDSHeavyItemEntity : BDSFeedBaseEntity
+
+@property(retain, nonatomic) BDSItemVideoEntity *video; // @synthesize video=_video;
+@property(retain, nonatomic) BDSShareEntity *share; // @synthesize share=_share;
+@property(retain, nonatomic) BDSVideoEntity *originVideoDownload; // @synthesize originVideoDownload=_originVideoDownload;
+
+@end
+
+@interface BDSDetailNativeViewModel : NSObject
+
+@property(readonly, nonatomic) BDSHeavyItemEntity *heavyItem; // @synthesize heavyItem=_heavyItem;
+
+@end
+
 
 // 列表去广告
 %hook BDSMixedListBusinessBaseViewModel
@@ -82,6 +130,47 @@
     // BDASplashView *splashView = MSHookIvar<BDASplashView *>(self, "_splashView");
     BDASplashView *splashView = [self splashView];
     [splashView skipButtonClicked];
+}
+
+%end
+
+// 下载无水印视频
+%hook BDSDetailNativeContentViewController
+
+- (BDSDetailNativeViewModel *)viewModel {
+    
+    BDSDetailNativeViewModel *newViewModel = %orig;
+    BDSHeavyItemEntity *itemEntity = [newViewModel heavyItem];
+    
+    // 无水印视频
+    BDSVideoEntity *originVideoDownload = [itemEntity originVideoDownload];
+    if (originVideoDownload) {
+        NSArray *urlList = [originVideoDownload urlList];
+        NSMutableArray *originUrlList = [NSMutableArray array];
+        if (urlList.count > 0) {
+            for (BDSVideoUrlEntity *entity in urlList) {
+                [originUrlList addObject:[entity url]];
+            }
+        }
+        if (originUrlList.count > 0) {
+            // 分享
+            BDSShareEntity *share = [itemEntity share];
+            if (share) {
+                share.videoUrls = originUrlList;
+                share.godCommentUrlList = originUrlList;
+            }
+            // 下载视频
+            BDSItemVideoEntity *video = [itemEntity video];
+            if (video) {
+                BDSVideoEntity *videoDownload = [video videoDownload];
+                if (videoDownload) {
+                    videoDownload.urlList = urlList;
+                    videoDownload.godCommentUrlList = originUrlList;
+                }
+            }
+        }
+    }
+    return newViewModel;
 }
 
 %end
