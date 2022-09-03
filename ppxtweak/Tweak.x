@@ -27,6 +27,12 @@
 
 @end
 
+@interface BDSCommentCellViewModel : NSObject
+
+@property(retain, nonatomic) id contentData; // @synthesize contentData=_contentData;
+
+@end
+
 @interface BDSVideoUrlEntity : NSObject
 
 @property(copy, nonatomic) NSString *url; // @synthesize url=_url;
@@ -75,6 +81,23 @@
 
 @end
 
+@interface BDSCommentEntity : BDSBaseBusinessModel
+
+@property(nonatomic) long long type; // @synthesize type=_type;
+@property(copy, nonatomic) NSArray *images; // @synthesize images=_images;
+@property(retain, nonatomic) BDSVideoEntity *video; // @synthesize video=_video;
+@property(retain, nonatomic) BDSVideoEntity *videoDownload; // @synthesize videoDownload=_videoDownload;
+@property(retain, nonatomic) BDSShareEntity *share; // @synthesize share=_share;
+
+@end
+
+@interface BDSImageInfosModel : BDSBaseBusinessModel
+
+@property(copy, nonatomic) NSArray *urlList; // @synthesize urlList=_urlList;
+@property(copy, nonatomic) NSArray *downloadURLList; // @synthesize downloadURLList=_downloadURLList;
+
+@end
+
 
 // 列表去广告
 %hook BDSMixedListBusinessBaseViewModel
@@ -116,6 +139,52 @@
     }
     if (adArr.count > 0) {
         [origArr removeObjectsInArray:adArr];
+    }
+    // 下载无水印视频图片
+    for (id model in origArr) {
+        if ([model isKindOfClass:%c(BDSCommentCellViewModel)]) {
+            BDSCommentCellViewModel *commentModel = (BDSCommentCellViewModel *)model;
+            id contentData = [commentModel contentData];
+            if ([contentData isKindOfClass:%c(BDSCommentEntity)]) {
+                BDSCommentEntity *contentModel = (BDSCommentEntity *)contentData;
+                if ([contentModel type] == 2) { // 图文动态
+                    NSArray *images = [contentModel images];
+                    if (images.count > 0) {
+                        for (id imageModel in images) {
+                            if ([imageModel isKindOfClass:%c(BDSImageInfosModel)]) {
+                                BDSImageInfosModel *imageInfosModel = (BDSImageInfosModel *)imageModel;
+                                if (imageInfosModel.urlList.count > 0 && imageInfosModel.downloadURLList.count > 0) {
+                                    imageInfosModel.downloadURLList = imageInfosModel.urlList;
+                                }
+                            }
+                        }
+                    }
+                } else if ([contentModel type] == 3) { // 视频动态
+                    BDSVideoEntity *video = [contentModel video]; // 原视频
+                    BDSVideoEntity *videoDownload = [contentModel videoDownload]; // 下载视频
+                    BDSShareEntity *share = [contentModel share]; // 分享模型
+                    NSMutableArray *originUrlList = [NSMutableArray array];
+                    if (video) {
+                        NSArray *urlList = [video urlList];
+                        if (urlList.count > 0) {
+                            for (BDSVideoUrlEntity *entity in urlList) {
+                                [originUrlList addObject:[entity url]];
+                            }
+                        }
+                        if (originUrlList.count > 0) {
+                            if (share) {
+                                share.videoUrls = originUrlList;
+                                share.godCommentUrlList = originUrlList;
+                            }
+                            if (videoDownload) {
+                                videoDownload.urlList = urlList;
+                                videoDownload.godCommentUrlList = originUrlList;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     return origArr;
 }
