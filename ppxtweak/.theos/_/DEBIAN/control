@@ -1,10 +1,10 @@
 Package: com.zy.ppxtweak
 Name: 皮皮虾去广告（纯净版）
 Architecture: iphoneos-arm
-Description: 皮皮虾去除启动页广告，视频中穿插的广告。
+Description: 皮皮虾去除启动页广告，视频中穿插的广告，下载无水印视频。
 Maintainer: zy
 Author: zy
 Section: Tweaks
 Depends: mobilesubstrate (>= 0.9.5000)
-Version: 1.0.1-8+debug
+Version: 1.0.3-1+debug
 Installed-Size: 220
