@@ -1,6 +1,7 @@
-/Users/jingwan/Desktop/pptweak/ppxtweak/ppxtweak/.theos/obj/debug/armv7/Tweak.x.654a86bb.o: \
-  /Users/jingwan/Desktop/pptweak/ppxtweak/ppxtweak/.theos/obj/debug/armv7/Tweak.x.m \
+/Users/jingwan/Desktop/pppppppp/ppxtweak/.theos/obj/debug/armv7/Tweak.x.ee98ed85.o: \
+  /Users/jingwan/Desktop/pppppppp/ppxtweak/.theos/obj/debug/armv7/Tweak.x.m \
   /opt/theos/Prefix.pch \
+  /opt/theos/vendor/include/libhooker/module.modulemap \
   /opt/theos/vendor/include/AppList/module.modulemap \
   /opt/theos/vendor/include/rocketbootstrap/module.modulemap \
   /opt/theos/vendor/include/Flipswitch/module.modulemap \
@@ -11,6 +12,8 @@
   /opt/theos/vendor/include/substrate.h
 
 /opt/theos/Prefix.pch:
+
+/opt/theos/vendor/include/libhooker/module.modulemap:
 
 /opt/theos/vendor/include/AppList/module.modulemap:
 

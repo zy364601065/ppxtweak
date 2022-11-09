@@ -11,9 +11,14 @@
 
 @end
 
+@interface BDASplashSkipButton : UIButton
+
+@end
+
 @interface BDASplashView : UIView
 
-- (void)skipButtonClicked;
+@property(retain, nonatomic) BDASplashSkipButton *skipButton; // @synthesize skipButton=_skipButton;
+- (void)skipButtonClicked:(id)arg1;
 
 @end
 
@@ -198,7 +203,7 @@
 
     // BDASplashView *splashView = MSHookIvar<BDASplashView *>(self, "_splashView");
     BDASplashView *splashView = [self splashView];
-    [splashView skipButtonClicked];
+    [splashView skipButtonClicked:[splashView skipButton]];
 }
 
 %end
