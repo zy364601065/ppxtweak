@@ -103,6 +103,50 @@
 
 @end
 
+@interface BDSUserCellStyleModel : NSObject
+
+@property(copy, nonatomic) NSString *actionURL; // @synthesize actionURL=_actionURL;
+@property(copy, nonatomic) NSString *iconURL; // @synthesize iconURL=_iconURL;
+@property(copy, nonatomic) NSString *title; // @synthesize title=_title;
+
+@end
+
+@interface BDSUserHomeCellStyleModel : BDSUserCellStyleModel
+
+@property(copy, nonatomic) NSString *eventName; // @synthesize eventName=_eventName;
+@property(copy, nonatomic) NSDictionary *eventParams; // @synthesize eventParams=_eventParams;
+
+@end
+
+@interface BDSUserHomeFooterCell : UITableViewCell
+
+- (void)configCellWithModels:(NSArray *)arg1;
+
+@end
+
+/*
+我的界面新增插件按钮
+*/
+
+%hook BDSUserHomeFooterCell
+
+- (void)configCellWithModels:(NSArray *)arg1 {
+    if (arg1.count > 0) {
+        NSMutableArray *itemArray = [NSMutableArray arrayWithArray:arg1];
+        BDSUserHomeCellStyleModel *model = [[%c(BDSUserHomeCellStyleModel) alloc] init];
+        model.title = @"插件";
+        model.iconURL = @"home_setting_icon";
+        model.actionURL = @"~://user/setting";
+        model.eventName = @"my_profile_cell_click";
+        model.eventParams = @{@"event_module": @"option"};
+        [itemArray addObject:model];
+        arg1 = itemArray;
+    }
+    %orig;
+}
+
+%end
+
 
 // 列表去广告
 %hook BDSMixedListBusinessBaseViewModel

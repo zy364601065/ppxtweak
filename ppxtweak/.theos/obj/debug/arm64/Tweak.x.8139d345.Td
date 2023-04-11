@@ -1,5 +1,5 @@
-/Users/jingwan/Desktop/pppppppp/ppxtweak/.theos/obj/debug/armv7/Tweak.x.ee98ed85.o: \
-  /Users/jingwan/Desktop/pppppppp/ppxtweak/.theos/obj/debug/armv7/Tweak.x.m \
+/Users/jingwan/Desktop/textssssss/ppxtweak/.theos/obj/debug/arm64/Tweak.x.8139d345.o: \
+  /Users/jingwan/Desktop/textssssss/ppxtweak/.theos/obj/debug/arm64/Tweak.x.m \
   /opt/theos/Prefix.pch \
   /opt/theos/vendor/include/libhooker/module.modulemap \
   /opt/theos/vendor/include/AppList/module.modulemap \
