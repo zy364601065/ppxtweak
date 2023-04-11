@@ -124,9 +124,36 @@
 
 @end
 
+
+@interface BDSUserHomeViewController : UIViewController
+
+- (void)openURLWithModel:(BDSUserHomeCellStyleModel *)arg1 tableView:(id)arg2 IndexPath:(id)arg3;
+
+@end
+
+@interface BDSUserBaseCell : UITableViewCell
+
+- (void)configCellWithModel:(BDSUserHomeCellStyleModel *)arg1;
+
+@end
+
 /*
 我的界面新增插件按钮
 */
+
+%hook BDSUserHomeViewController
+
+- (void)openURLWithModel:(BDSUserHomeCellStyleModel *)arg1 tableView:(id)arg2 IndexPath:(id)arg3 {
+
+    if ([arg1.actionURL == @"ppx.quatrro.setting"]) {
+        QTSettingViewController *settingViewController = [[QTSettingViewController alloc] init];
+        [self.navigationController PushViewController:settingViewController animated:YES];
+        retain;
+    }
+    %orig;
+}
+
+%end
 
 %hook BDSUserHomeFooterCell
 
@@ -134,9 +161,9 @@
     if (arg1.count > 0) {
         NSMutableArray *itemArray = [NSMutableArray arrayWithArray:arg1];
         BDSUserHomeCellStyleModel *model = [[%c(BDSUserHomeCellStyleModel) alloc] init];
-        model.title = @"插件";
+        model.title = @"插件设置";
         model.iconURL = @"home_setting_icon";
-        model.actionURL = @"~://user/setting";
+        model.actionURL = @"ppx.quatrro.setting";
         model.eventName = @"my_profile_cell_click";
         model.eventParams = @{@"event_module": @"option"};
         [itemArray addObject:model];
