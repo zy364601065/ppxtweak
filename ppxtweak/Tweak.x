@@ -137,6 +137,10 @@
 
 @end
 
+@interface QTSettingViewController : UIViewController
+
+@end
+
 /*
 我的界面新增插件按钮
 */
@@ -145,10 +149,10 @@
 
 - (void)openURLWithModel:(BDSUserHomeCellStyleModel *)arg1 tableView:(id)arg2 IndexPath:(id)arg3 {
 
-    if ([arg1.actionURL == @"ppx.quatrro.setting"]) {
-        QTSettingViewController *settingViewController = [[QTSettingViewController alloc] init];
-        [self.navigationController PushViewController:settingViewController animated:YES];
-        retain;
+    if ([[arg1 actionURL] isEqual:@"ppx.quatrro.setting"]) {
+        QTSettingViewController *settingViewController = [[%c(QTSettingViewController) alloc] init];
+        [self.navigationController pushViewController:settingViewController animated:YES];
+        return;
     }
     %orig;
 }
