@@ -6,7 +6,7 @@
 //
 
 #import "QTSettingsViewModel.h"
-#import "BDSUserHomeCellStyleModel.h"
+#import "QTPPXHeader.h"
 
 @implementation QTSettingsViewModel
 
@@ -20,7 +20,7 @@
 
 - (void)addArray {
     
-    BDSUserHomeCellStyleModel *model = [[BDSUserHomeCellStyleModel alloc] init];
+    BDSUserHomeCellStyleModel *model = [[objc_getClass("BDSUserHomeCellStyleModel") alloc] init];
     model.title = @"插件设置";
     self.settingsModelArray = @[model];
 }
