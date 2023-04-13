@@ -34,7 +34,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    BDSUserHomeCellStyleModel *model = self.viewModel.settingsModelArray[indexPath.row];
+    BDSSettingsCellStyleModel *model = self.viewModel.settingsModelArray[indexPath.row];
     BDSUserBaseCell *cell = [tableView dequeueReusableCellWithIdentifier:kBDSUserBaseCell forIndexPath:indexPath];
     [cell configCellWithModel:model];
     return cell;

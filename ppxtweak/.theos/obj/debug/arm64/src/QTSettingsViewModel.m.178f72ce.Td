@@ -1,8 +1,6 @@
-/Users/jingwan/Desktop/pppppp/ppxtweak/.theos/obj/debug/arm64e/src/Tweak.x.50cf2296.o: \
-  /Users/jingwan/Desktop/pppppp/ppxtweak/.theos/obj/debug/arm64e/src/Tweak.x.m \
-  /opt/theos/Prefix.pch \
-  /Users/jingwan/Desktop/pppppp/ppxtweak/src/QTPPXHeader.h \
-  /opt/theos/vendor/include/libhooker/module.modulemap \
+/Users/zy/Desktop/ppxtw/ppxtweak/.theos/obj/debug/arm64/src/QTSettingsViewModel.m.178f72ce.o: \
+  src/QTSettingsViewModel.m /opt/theos/Prefix.pch \
+  src/QTSettingsViewModel.h \
   /opt/theos/vendor/include/AppList/module.modulemap \
   /opt/theos/vendor/include/rocketbootstrap/module.modulemap \
   /opt/theos/vendor/include/Flipswitch/module.modulemap \
@@ -10,14 +8,11 @@
   /opt/theos/vendor/include/libactivator/module.modulemap \
   /opt/theos/vendor/include/libprefs/module.modulemap \
   /opt/theos/vendor/include/Preferences/module.modulemap \
-  /Users/jingwan/Desktop/pppppp/ppxtweak/src/QTSettingViewController.h \
-  /opt/theos/vendor/include/substrate.h
+  src/QTPPXHeader.h
 
 /opt/theos/Prefix.pch:
 
-/Users/jingwan/Desktop/pppppp/ppxtweak/src/QTPPXHeader.h:
-
-/opt/theos/vendor/include/libhooker/module.modulemap:
+src/QTSettingsViewModel.h:
 
 /opt/theos/vendor/include/AppList/module.modulemap:
 
@@ -33,6 +28,4 @@
 
 /opt/theos/vendor/include/Preferences/module.modulemap:
 
-/Users/jingwan/Desktop/pppppp/ppxtweak/src/QTSettingViewController.h:
-
-/opt/theos/vendor/include/substrate.h:
+src/QTPPXHeader.h:

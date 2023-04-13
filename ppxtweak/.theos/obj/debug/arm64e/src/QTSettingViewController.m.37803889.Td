@@ -1,7 +1,6 @@
-/Users/jingwan/Desktop/pppppp/ppxtweak/.theos/obj/debug/arm64e/src/QTSettingViewController.m.50cf2296.o: \
+/Users/zy/Desktop/ppxtw/ppxtweak/.theos/obj/debug/arm64e/src/QTSettingViewController.m.37803889.o: \
   src/QTSettingViewController.m /opt/theos/Prefix.pch \
   src/QTSettingViewController.h \
-  /opt/theos/vendor/include/libhooker/module.modulemap \
   /opt/theos/vendor/include/AppList/module.modulemap \
   /opt/theos/vendor/include/rocketbootstrap/module.modulemap \
   /opt/theos/vendor/include/Flipswitch/module.modulemap \
@@ -14,8 +13,6 @@
 /opt/theos/Prefix.pch:
 
 src/QTSettingViewController.h:
-
-/opt/theos/vendor/include/libhooker/module.modulemap:
 
 /opt/theos/vendor/include/AppList/module.modulemap:
 

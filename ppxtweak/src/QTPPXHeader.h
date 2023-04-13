@@ -115,6 +115,10 @@
 @property(copy, nonatomic) NSString *actionURL; // @synthesize actionURL=_actionURL;
 @property(copy, nonatomic) NSString *iconURL; // @synthesize iconURL=_iconURL;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property(nonatomic) long long cellStyleType; // @synthesize cellStyleType=_cellStyleType;
+@property(copy, nonatomic) NSString *detailDescrib; // @synthesize detailDescrib=_detailDescrib;
+@property(copy, nonatomic) NSString *subTitle; // @synthesize subTitle=_subTitle;
+@property(nonatomic) _Bool switchOn; // @synthesize switchOn=_switchOn;
 
 @end
 
@@ -122,6 +126,12 @@
 
 @property(copy, nonatomic) NSString *eventName; // @synthesize eventName=_eventName;
 @property(copy, nonatomic) NSDictionary *eventParams; // @synthesize eventParams=_eventParams;
+
+@end
+
+@interface BDSSettingsCellStyleModel : BDSUserCellStyleModel
+
+@property(nonatomic) long long modelType; // @synthesize modelType=_modelType;
 
 @end
 
@@ -140,7 +150,7 @@
 
 @interface BDSUserBaseCell : UITableViewCell
 
-- (void)configCellWithModel:(BDSUserHomeCellStyleModel *)arg1;
+- (void)configCellWithModel:(BDSSettingsCellStyleModel *)arg1;
 
 @end
 

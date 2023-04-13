@@ -6,5 +6,5 @@ Maintainer: zy
 Author: zy
 Section: Tweaks
 Depends: mobilesubstrate (>= 0.9.5000)
-Version: 1.0.4-15+debug
+Version: 1.0.4-24+debug
 Installed-Size: 296
