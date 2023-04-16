@@ -8,6 +8,8 @@
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
 
+#define QTFile(path) @"/Library/PreferenceLoader/Preferences/ZY_PPX/" #path
+
 @interface BDSADInfoEntity : NSObject
 
 @end

@@ -10,5 +10,6 @@ TWEAK_NAME = ppxtweak
 
 ppxtweak_FILES = $(wildcard src/*.m) src/Tweak.x
 ppxtweak_CFLAGS = -fobjc-arc
+ppxtweak_ICON = "./set.png"
 
 include $(THEOS_MAKE_PATH)/tweak.mk
