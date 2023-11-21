@@ -8,7 +8,7 @@ SRC = $(wildcard src/*.m)
 
 TWEAK_NAME = ppxtweak
 
-ppxtweak_FILES = $(wildcard src/*.m) src/Tweak.x
+ppxtweak_FILES = $(wildcard src/*.m) src/Tweak.xm
 ppxtweak_CFLAGS = -fobjc-arc
 ppxtweak_ICON = "./set.png"
 

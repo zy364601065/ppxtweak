@@ -11,7 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface QTSettingsViewModel : NSObject
 
-@property (nonatomic, copy) NSArray *settingsModelArray;
+@property (nonatomic, strong) NSMutableArray *settingsModelArray;
+- (void)showRateModel:(BOOL)isShow;
 
 @end
 
