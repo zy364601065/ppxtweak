@@ -1,10 +1,10 @@
 Package: com.zy.ppxtweak
 Name: 皮皮虾（纯净版，无水印下载）
 Architecture: iphoneos-arm
-Description: 下载无水印视频，皮皮虾去除启动页广告，视频中穿插的广告。
+Description: 下载无水印视频，皮皮虾去除启动页广告，视频中穿插的广告，自定义播放速率。
 Maintainer: zy
 Author: zy
 Section: Tweaks
 Depends: mobilesubstrate (>= 0.9.5000)
-Version: 1.0.4-33
+Version: 1.0.4-34
 Installed-Size: 272
