@@ -26,7 +26,57 @@
 2. 搜索 "ppxtweak" 或 "皮皮虾"
 3. 点击安装
 
-### 方式二：手动安装
+### 方式二：通过 TrollStore（巨魔）安装
+
+**适用设备：**
+- iOS 14.0 - 15.4.1（A12-A15 设备）
+- iOS 15.5 Beta 1 - 15.5 Beta 4
+- iOS 15.6 Beta 1 - 15.6 Beta 5
+- iOS 15.7 Beta 1
+- iOS 16.0 - 16.1.2（部分设备）
+- 其他支持 TrollStore 的版本
+
+**安装步骤：**
+
+1. **安装 TrollStore**
+   - 访问 [TrollStore 官网](https://github.com/opa334/TrollStore) 或相关教程
+   - 根据你的 iOS 版本选择对应的安装方法
+   - 完成 TrollStore 的安装
+
+2. **准备插件文件**
+   - 下载本项目的 `.deb` 安装包
+   - 或者从源码编译生成 `.deb` 文件
+
+3. **转换为 IPA 格式（如需要）**
+   ```bash
+   # 方法一：使用 dpkg-deb 解压后重新打包为 IPA
+   # 注意：这需要将 .deb 转换为 TrollStore 可安装的格式
+   
+   # 方法二：使用专门的转换工具
+   # 推荐使用 TrollStore Helper 或相关工具进行转换
+   ```
+
+4. **通过 TrollStore 安装**
+   - 打开 TrollStore 应用
+   - 点击 "Install IPA File" 或 "+" 按钮
+   - 选择转换后的 IPA 文件或使用 TrollStore 兼容的安装包
+   - 等待安装完成
+
+5. **激活插件**
+   - 安装完成后，重启设备或使用 `ldrestart` 命令
+   - 打开皮皮虾 App，插件将自动生效
+
+**注意事项：**
+- ⚠️ TrollStore 安装方式需要设备支持，请先确认你的设备版本是否兼容
+- ⚠️ 某些版本的 TrollStore 可能不支持直接安装 .deb 文件，需要转换为 IPA 格式
+- ⚠️ 使用 TrollStore 安装的插件功能与越狱安装相同，但安装方式不同
+- ⚠️ 如果遇到安装问题，建议使用传统的越狱方式安装
+
+**相关资源：**
+- [TrollStore GitHub](https://github.com/opa334/TrollStore)
+- [TrollStore 安装教程](https://github.com/opa334/TrollStore#installation)
+
+### 方式三：手动安装
 
 1. 下载 `.deb` 安装包
 2. 使用 Filza 或通过 SSH 安装：
@@ -35,7 +85,7 @@
    ```
 3. 重启 SpringBoard 或使用 `killall SpringBoard` 命令
 
-### 方式三：从源码编译
+### 方式四：从源码编译
 
 ```bash
 # 克隆仓库
@@ -109,6 +159,7 @@ make install
 3. 请勿将下载的内容用于商业用途
 4. 建议在测试设备上使用，避免影响主设备
 5. 插件更新可能需要重新安装，请及时关注更新
+6. TrollStore 安装方式需要设备版本支持，请确认兼容性后再使用
 
 ## 免责声明
 
@@ -125,6 +176,8 @@ make install
 5. **兼容性**：本插件可能与皮皮虾 App 的某些版本不兼容。开发者不保证插件在所有版本上都能正常工作。
 
 6. **更新维护**：开发者保留随时修改、更新或停止维护本插件的权利，且不承担通知用户的义务。
+
+7. **TrollStore 相关**：使用 TrollStore 安装本插件时，用户需要自行承担 TrollStore 本身可能带来的风险。开发者不对 TrollStore 的安装、使用或兼容性问题承担责任。
 
 **使用本插件即表示您已阅读、理解并同意上述免责声明。如不同意，请立即停止使用并卸载本插件。**
 
